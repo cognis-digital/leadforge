@@ -36,3 +36,4 @@
 2025-10-11T16:06:06  test: add edge case
 2026-02-19T11:23:13  refactor: tidy internals
 2026-03-18T18:40:20  fix: handle empty input gracefully
+2024-06-16T17:21:51  refactor(output): add pagination to large reports
