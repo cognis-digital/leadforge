@@ -37,3 +37,4 @@
 2026-02-19T11:23:13  refactor: tidy internals
 2026-03-18T18:40:20  fix: handle empty input gracefully
 2024-06-16T17:21:51  refactor(output): add pagination to large reports
+2024-06-27T12:38:58  style(scan): add a fast path for the common case
