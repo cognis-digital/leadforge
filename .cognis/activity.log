@@ -38,3 +38,4 @@
 2026-03-18T18:40:20  fix: handle empty input gracefully
 2024-06-16T17:21:51  refactor(output): add pagination to large reports
 2024-06-27T12:38:58  style(scan): add a fast path for the common case
+2024-07-08T19:55:05  docs: standing on the shoulders of giants (garak, sigma, trufflehog)
