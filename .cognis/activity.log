@@ -42,3 +42,4 @@
 2024-08-07T14:12:12  docs(tests): add a --format json alias
 2024-08-18T09:29:19  style(format): add a --quiet mode
 2024-09-17T16:46:26  test(format): load rules lazily for faster startup
+2024-09-28T11:03:33  docs: here be dragons
