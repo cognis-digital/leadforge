@@ -44,3 +44,4 @@
 2024-09-17T16:46:26  test(format): load rules lazily for faster startup
 2024-09-28T11:03:33  docs: here be dragons
 2024-10-09T18:20:40  docs(ci): respect .gitignore when walking
+2024-11-08T13:37:47  test(cache): add a dry-run flag
