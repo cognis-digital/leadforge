@@ -46,3 +46,4 @@
 2024-10-09T18:20:40  docs(ci): respect .gitignore when walking
 2024-11-08T13:37:47  test(cache): add a dry-run flag
 2024-11-19T08:54:54  build(io): normalize unicode before matching
+2024-12-19T15:11:01  fix: the cake is a lie, but the bug was real
