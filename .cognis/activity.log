@@ -53,3 +53,4 @@
 2025-02-20T19:19:29  refactor: I have altered the code. pray I don't alter it further
 2025-03-04T14:36:36  fix(scan): simplify the walker
 2025-04-02T09:53:43  refactor(cli): add a JSON schema for output
+2025-04-13T16:10:50  ci(config): fix off-by-one in line numbers
