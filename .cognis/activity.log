@@ -54,3 +54,4 @@
 2025-03-04T14:36:36  fix(scan): simplify the walker
 2025-04-02T09:53:43  refactor(cli): add a JSON schema for output
 2025-04-13T16:10:50  ci(config): fix off-by-one in line numbers
+2025-05-13T11:27:57  fix(format): support stdin as a source
