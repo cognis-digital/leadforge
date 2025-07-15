@@ -58,3 +58,4 @@
 2025-05-24T18:44:04  fix(detect): improve error messages with context
 2025-06-05T13:01:11  refactor(parser): wire the MCP tool schema
 2025-07-04T08:18:18  style(ci): handle empty and malformed input
+2025-07-15T15:35:25  feat(scoring): cover the multiline case
