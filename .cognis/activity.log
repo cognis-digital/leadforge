@@ -59,3 +59,4 @@
 2025-06-05T13:01:11  refactor(parser): wire the MCP tool schema
 2025-07-04T08:18:18  style(ci): handle empty and malformed input
 2025-07-15T15:35:25  feat(scoring): cover the multiline case
+2025-08-14T10:52:32  feat(scoring): add a regression fixture
