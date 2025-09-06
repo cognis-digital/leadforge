@@ -61,3 +61,4 @@
 2025-07-15T15:35:25  feat(scoring): cover the multiline case
 2025-08-14T10:52:32  feat(scoring): add a regression fixture
 2025-08-25T17:09:39  docs(engine): pin the test dependencies
+2025-09-06T12:26:46  test(docs): add color + severity icons
