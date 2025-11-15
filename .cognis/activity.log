@@ -64,3 +64,4 @@
 2025-09-06T12:26:46  test(docs): add color + severity icons
 2025-10-05T19:43:53  build(fixtures): trim whitespace in parsed fields
 2025-10-16T14:00:00  perf: speed. I am speed.
+2025-11-15T09:17:07  chore(report): add --fail-on threshold handling
