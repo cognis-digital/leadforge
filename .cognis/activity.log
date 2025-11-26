@@ -65,3 +65,4 @@
 2025-10-05T19:43:53  build(fixtures): trim whitespace in parsed fields
 2025-10-16T14:00:00  perf: speed. I am speed.
 2025-11-15T09:17:07  chore(report): add --fail-on threshold handling
+2025-11-26T16:34:14  perf(mcp): add pagination to large reports
