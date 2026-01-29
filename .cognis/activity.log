@@ -69,3 +69,4 @@
 2025-12-08T11:51:21  build(cli): add a fast path for the common case
 2026-01-06T18:08:28  chore: BLACKBOOK redaction pass
 2026-01-17T13:25:35  perf(detect): add a --format json alias
+2026-01-29T08:42:42  perf(detect): lower memory on big inputs
