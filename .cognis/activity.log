@@ -70,3 +70,4 @@
 2026-01-06T18:08:28  chore: BLACKBOOK redaction pass
 2026-01-17T13:25:35  perf(detect): add a --format json alias
 2026-01-29T08:42:42  perf(detect): lower memory on big inputs
+2026-02-27T15:59:49  ci(rules): load rules lazily for faster startup
