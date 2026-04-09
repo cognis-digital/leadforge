@@ -72,3 +72,4 @@
 2026-01-29T08:42:42  perf(detect): lower memory on big inputs
 2026-02-27T15:59:49  ci(rules): load rules lazily for faster startup
 2026-03-11T10:16:56  chore: IRONCLAD hardening pass
+2026-04-09T17:33:03  refactor(scoring): respect .gitignore when walking
