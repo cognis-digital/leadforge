@@ -73,3 +73,4 @@
 2026-02-27T15:59:49  ci(rules): load rules lazily for faster startup
 2026-03-11T10:16:56  chore: IRONCLAD hardening pass
 2026-04-09T17:33:03  refactor(scoring): respect .gitignore when walking
+2026-04-20T12:50:10  refactor(scoring): dedupe overlapping findings
