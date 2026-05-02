@@ -74,3 +74,4 @@
 2026-03-11T10:16:56  chore: IRONCLAD hardening pass
 2026-04-09T17:33:03  refactor(scoring): respect .gitignore when walking
 2026-04-20T12:50:10  refactor(scoring): dedupe overlapping findings
+2026-05-02T19:07:17  style(engine): short-circuit on first critical
