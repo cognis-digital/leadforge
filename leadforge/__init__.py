@@ -1,21 +1,11 @@
-"""LEADFORGE: MCP-native CRM pipeline with email sequences (stdlib-only)."""
-
-from .core import (
-    TOOL_NAME,
-    TOOL_VERSION,
-    STAGES,
-    Engine,
-    Lead,
-    LeadForgeError,
-    DEFAULT_SEQUENCES,
-)
-
-__all__ = [
-    "TOOL_NAME",
-    "TOOL_VERSION",
-    "STAGES",
-    "Engine",
-    "Lead",
-    "LeadForgeError",
-    "DEFAULT_SEQUENCES",
-]
+"""leadforge — part of the Cognis Neural Suite."""
+try:  # re-export the tool's public API + identity from core
+    from leadforge.core import *  # noqa: F401,F403
+except Exception:  # pragma: no cover
+    pass
+try:
+    from leadforge.core import TOOL_NAME, TOOL_VERSION
+except Exception:  # pragma: no cover
+    TOOL_NAME = "leadforge"
+    TOOL_VERSION = "0.1.0"
+__version__ = TOOL_VERSION
