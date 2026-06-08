@@ -1,3 +1,21 @@
-"""LEADFORGE — Lightweight MCP-native CRM pipeline with email sequences."""
-from leadforge.core import scan, TOOL_NAME, TOOL_VERSION
-__all__ = ["scan", "TOOL_NAME", "TOOL_VERSION"]
+"""LEADFORGE: MCP-native CRM pipeline with email sequences (stdlib-only)."""
+
+from .core import (
+    TOOL_NAME,
+    TOOL_VERSION,
+    STAGES,
+    Engine,
+    Lead,
+    LeadForgeError,
+    DEFAULT_SEQUENCES,
+)
+
+__all__ = [
+    "TOOL_NAME",
+    "TOOL_VERSION",
+    "STAGES",
+    "Engine",
+    "Lead",
+    "LeadForgeError",
+    "DEFAULT_SEQUENCES",
+]

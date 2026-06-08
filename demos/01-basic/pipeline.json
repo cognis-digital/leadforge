@@ -1,0 +1,54 @@
+{
+  "leads": {
+    "a1b2c3d4": {
+      "id": "a1b2c3d4",
+      "name": "Marcus Wright",
+      "email": "marcus@acme-robotics.com",
+      "company": "Acme Robotics",
+      "value": 24000.0,
+      "stage": "qualified",
+      "sequence": null,
+      "seq_step": 0,
+      "next_due": null,
+      "created": "2026-06-01T14:00:00+00:00",
+      "history": [
+        {"at": "2026-06-01T14:00:00+00:00", "event": "created"},
+        {"at": "2026-06-03T09:00:00+00:00", "event": "stage", "from": "new", "to": "contacted"},
+        {"at": "2026-06-05T16:30:00+00:00", "event": "stage", "from": "contacted", "to": "qualified"}
+      ]
+    },
+    "e5f6a7b8": {
+      "id": "e5f6a7b8",
+      "name": "Priya Natarajan",
+      "email": "priya@northwind.io",
+      "company": "Northwind Labs",
+      "value": 8500.0,
+      "stage": "contacted",
+      "sequence": "cold-outreach",
+      "seq_step": 1,
+      "next_due": "2026-06-08T13:00:00+00:00",
+      "created": "2026-06-04T11:15:00+00:00",
+      "history": [
+        {"at": "2026-06-04T11:15:00+00:00", "event": "created"},
+        {"at": "2026-06-04T11:16:00+00:00", "event": "enrolled", "sequence": "cold-outreach"},
+        {"at": "2026-06-05T13:00:00+00:00", "event": "stage", "from": "new", "to": "contacted"}
+      ]
+    },
+    "c9d0e1f2": {
+      "id": "c9d0e1f2",
+      "name": "Dana Okafor",
+      "email": "dana@brightline.co",
+      "company": "Brightline",
+      "value": 15000.0,
+      "stage": "new",
+      "sequence": null,
+      "seq_step": 0,
+      "next_due": null,
+      "created": "2026-06-07T18:45:00+00:00",
+      "history": [
+        {"at": "2026-06-07T18:45:00+00:00", "event": "created"}
+      ]
+    }
+  },
+  "sequences": {}
+}
