@@ -36,9 +36,10 @@ CRM your AI agents can drive over MCP
 <a name="features"></a>
 ## Features
 
-- ✅ Todo
-- ✅ Fixme
-- ✅ Xxx
+- ✅ Fast, single-purpose CLI
+- ✅ JSON / SARIF output for pipelines
+- ✅ CI fail-gate (`--fail-on`)
+- ✅ MCP server for AI agents
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
