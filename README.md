@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-leadforge
+pip install "git+https://github.com/cognis-digital/leadforge.git"
 leadforge scan .            # → prioritized findings in seconds
 ```
 
@@ -49,7 +49,7 @@ CRM your AI agents can drive over MCP
 ## Quick start
 
 ```bash
-pip install cognis-leadforge
+pip install "git+https://github.com/cognis-digital/leadforge.git"
 leadforge --version
 leadforge scan .                       # scan current project
 leadforge scan . --format json         # machine-readable
