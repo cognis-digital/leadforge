@@ -20,6 +20,35 @@ pip install cognis-leadforge
 leadforge scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. **Install** (Python 3.8+, stdlib only):
+   ```bash
+   pip install leadforge
+   ```
+   State lives in a JSON store (set with the global `--db` flag or `LEADFORGE_DB`).
+   Note: `--format` and `--db` are **global** flags and must precede the subcommand.
+2. **Add a lead** and move it through the pipeline:
+   ```bash
+   leadforge add "Acme Corp" jane@acme.com --company Acme --value 12000
+   leadforge move <lead_id> qualified
+   ```
+3. **Enroll a lead in an email sequence**:
+   ```bash
+   leadforge enroll <lead_id> --sequence cold-outreach
+   ```
+4. **Read the output** — JSON by default; use `--format table` for humans:
+   ```bash
+   leadforge --format table list --stage qualified
+   leadforge --format table pipeline      # win-rate + value by stage
+   ```
+5. **Run the sequence cadence (cron / agent)** — find due steps, then advance them:
+   ```bash
+   leadforge due                          # what is due now
+   leadforge send                         # mark due steps sent and advance them
+   ```
+
+
 ## Contents
 
 - [Why leadforge?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
