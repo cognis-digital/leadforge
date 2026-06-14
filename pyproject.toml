@@ -34,3 +34,6 @@ leadforge = "leadforge.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["leadforge"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
