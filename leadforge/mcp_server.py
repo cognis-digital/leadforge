@@ -1,6 +1,10 @@
-"""LEADFORGE MCP server — exposes scan() as an MCP tool for Cognis.Studio."""
+"""LEADFORGE MCP server — exposes pipeline() as an MCP tool for Cognis.Studio."""
 from __future__ import annotations
-from leadforge.core import scan, to_json
+import json
+import sys
+
+from leadforge.core import Engine, LeadForgeError
+
 
 def serve() -> int:
     """Start an MCP stdio server. Requires the optional 'mcp' extra:
@@ -9,14 +13,21 @@ def serve() -> int:
     try:
         from mcp.server.fastmcp import FastMCP
     except Exception:
-        print("Install the MCP extra: pip install 'cognis-leadforge[mcp]'")
+        print(
+            "Install the MCP extra: pip install 'cognis-leadforge[mcp]'",
+            file=sys.stderr,
+        )
         return 1
     app = FastMCP("leadforge")
 
     @app.tool()
-    def leadforge_scan(target: str) -> str:
-        """Lightweight MCP-native CRM pipeline with email sequences. Returns JSON findings."""
-        return to_json(scan(target))
+    def leadforge_pipeline() -> str:
+        """Return a JSON pipeline summary (stage counts + values + win-rate)."""
+        try:
+            eng = Engine()
+            return json.dumps(eng.pipeline(), indent=2)
+        except LeadForgeError as exc:
+            return json.dumps({"error": str(exc)})
 
     app.run()
     return 0

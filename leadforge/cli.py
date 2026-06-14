@@ -110,6 +110,9 @@ def main(argv: Optional[List[str]] = None) -> int:
     except LeadForgeError as exc:
         print(json.dumps({"error": str(exc)}), file=sys.stderr)
         return 1
+    except Exception as exc:  # pragma: no cover — safety net for unexpected failures
+        print(json.dumps({"error": f"unexpected error: {exc}"}), file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":  # pragma: no cover

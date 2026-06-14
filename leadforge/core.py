@@ -81,10 +81,45 @@ class Engine:
     def _load(self) -> None:
         if not os.path.exists(self.path):
             return
-        with open(self.path, "r", encoding="utf-8") as fh:
-            data = json.load(fh)
-        self.leads = {lid: Lead(**rec) for lid, rec in data.get("leads", {}).items()}
-        self.sequences.update(data.get("sequences", {}))
+        try:
+            with open(self.path, "r", encoding="utf-8") as fh:
+                data = json.load(fh)
+        except json.JSONDecodeError as exc:
+            raise LeadForgeError(
+                f"database file is not valid JSON ({self.path}): {exc}"
+            ) from exc
+        except OSError as exc:
+            raise LeadForgeError(
+                f"cannot read database file ({self.path}): {exc}"
+            ) from exc
+        if not isinstance(data, dict):
+            raise LeadForgeError(
+                f"database file has unexpected format "
+                f"(expected a JSON object): {self.path}"
+            )
+        leads_raw = data.get("leads", {})
+        if not isinstance(leads_raw, dict):
+            raise LeadForgeError("database 'leads' field must be a JSON object")
+        loaded: Dict[str, Lead] = {}
+        for lid, rec in leads_raw.items():
+            if not isinstance(rec, dict):
+                raise LeadForgeError(
+                    f"lead record {lid!r} is not a JSON object"
+                )
+            # Drop unknown keys — keeps loading forward-compatible.
+            known = set(Lead.__dataclass_fields__)
+            rec_clean = {k: v for k, v in rec.items() if k in known}
+            try:
+                loaded[lid] = Lead(**rec_clean)
+            except TypeError as exc:
+                raise LeadForgeError(
+                    f"lead record {lid!r} is missing required fields: {exc}"
+                ) from exc
+        self.leads = loaded
+        sequences_raw = data.get("sequences", {})
+        if not isinstance(sequences_raw, dict):
+            raise LeadForgeError("database 'sequences' field must be a JSON object")
+        self.sequences.update(sequences_raw)
 
     def save(self) -> None:
         data = {
@@ -92,17 +127,27 @@ class Engine:
             "sequences": self.sequences,
         }
         tmp = self.path + ".tmp"
-        with open(tmp, "w", encoding="utf-8") as fh:
-            json.dump(data, fh, indent=2)
-        os.replace(tmp, self.path)
+        try:
+            with open(tmp, "w", encoding="utf-8") as fh:
+                json.dump(data, fh, indent=2)
+            os.replace(tmp, self.path)
+        except OSError as exc:
+            raise LeadForgeError(f"cannot save database ({self.path}): {exc}") from exc
 
     # ----- lead lifecycle ---------------------------------------------
     def add_lead(self, name: str, email: str, company: str = "",
                  value: float = 0.0) -> Lead:
+        name = (name or "").strip()
         if not name:
             raise LeadForgeError("lead name is required")
         if not EMAIL_RE.match(email or ""):
             raise LeadForgeError(f"invalid email: {email!r}")
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            raise LeadForgeError(f"value must be a number, got: {value!r}")
+        if value < 0:
+            raise LeadForgeError(f"value must be non-negative, got: {value}")
         for l in self.leads.values():
             if l.email.lower() == email.lower():
                 raise LeadForgeError(f"duplicate email: {email}")
@@ -163,8 +208,14 @@ class Engine:
         for lead in self.leads.values():
             if not lead.sequence or not lead.next_due:
                 continue
+            if lead.sequence not in self.sequences:
+                # Sequence was removed after enrollment — skip gracefully.
+                continue
+            steps = self.sequences[lead.sequence]
+            if not steps or lead.seq_step >= len(steps):
+                continue
             if _parse(lead.next_due) <= at:
-                step = self.sequences[lead.sequence][lead.seq_step]
+                step = steps[lead.seq_step]
                 out.append({
                     "lead_id": lead.id, "name": lead.name, "email": lead.email,
                     "sequence": lead.sequence, "step": lead.seq_step,
