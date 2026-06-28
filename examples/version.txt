@@ -1,0 +1,3 @@
+$ leadforge-emit --version
+
+leadforge 1.0.0

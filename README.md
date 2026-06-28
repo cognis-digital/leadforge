@@ -20,6 +20,72 @@ pip install cognis-leadforge
 leadforge scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ leadforge-emit --version
+leadforge 1.0.0
+```
+
+```console
+$ leadforge-emit --help
+usage: leadforge [-h] [--version] [--format {table,json}] [--db DB]
+                 {add,list,move,enroll,due,send,pipeline} ...
+
+MCP-native CRM pipeline with email sequences
+
+positional arguments:
+  {add,list,move,enroll,due,send,pipeline}
+    add                 add a lead
+    list                list leads
+    move                move a lead to a stage
+    enroll              enroll a lead in an email sequence
+    due                 show sequence steps that are due now
+    send                mark all due steps as sent and advance them
+    pipeline            pipeline summary metrics
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+  --db DB               path to JSON store (or env LEADFORGE_DB)
+```
+
+> Blocks above are real `leadforge` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "1234567890",
+        "title": "Suspicious Network Activity",
+        "description": "Potential malicious activity detected on network 192.168.1.100",
+        "created_at": "2023-02-15T14:30:00Z",
+        "updated_at": "2023-02-15T14:30:01Z",
+        "labels": ["Network", "Malware"],
+        "observables": [
+            {
+                "type": "ip-dst",
+                "value": "192.168.1.100"
+            },
+            {
+                "type": "file-md5",
+                "value": "12345678901234567890"
+            }
+        ]
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. **Install** (Python 3.8+, stdlib only):

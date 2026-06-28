@@ -1,0 +1,22 @@
+$ leadforge-emit --help
+
+usage: leadforge [-h] [--version] [--format {table,json}] [--db DB]
+                 {add,list,move,enroll,due,send,pipeline} ...
+
+MCP-native CRM pipeline with email sequences
+
+positional arguments:
+  {add,list,move,enroll,due,send,pipeline}
+    add                 add a lead
+    list                list leads
+    move                move a lead to a stage
+    enroll              enroll a lead in an email sequence
+    due                 show sequence steps that are due now
+    send                mark all due steps as sent and advance them
+    pipeline            pipeline summary metrics
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+  --db DB               path to JSON store (or env LEADFORGE_DB)
